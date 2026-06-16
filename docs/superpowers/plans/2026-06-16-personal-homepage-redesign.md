@@ -29,8 +29,10 @@
 Run:
 
 ```bash
-ruby - <<'RUBY'
-content = File.read('index.md')
+python3 - <<'PY'
+from pathlib import Path
+
+content = Path('index.md').read_text()
 required = [
   'class="research-homepage"',
   'id="about"',
@@ -43,9 +45,10 @@ required = [
   'Imitation-Relaxation Reinforcement Learning for Sparse Badminton Strikes via Dynamic Trajectory Generation',
   'Optimal Design of High-Dynamic Robotic Arm Based on Angular Momentum Maximum'
 ]
-missing = required.reject { |needle| content.include?(needle) }
-abort("Missing homepage features: #{missing.join(', ')}") unless missing.empty?
-RUBY
+missing = [needle for needle in required if needle not in content]
+if missing:
+    raise SystemExit('Missing homepage features: ' + ', '.join(missing))
+PY
 ```
 
 Expected: FAIL with missing homepage features.
@@ -542,25 +545,33 @@ Expected: Commit succeeds.
 Run:
 
 ```bash
-ruby - <<'RUBY'
-content = File.read('index.md')
+python3 - <<'PY'
+from pathlib import Path
+
+content = Path('index.md').read_text()
 internal_paths = [
   'DTG-IRRL-For-Badminton/',
   'DTG-IRRL-For-Badminton/image/fig1.jpg'
 ]
-missing_files = internal_paths.reject do |path|
-  File.exist?(path) || File.exist?(File.join(path, 'index.html'))
-end
-abort("Missing internal paths: #{missing_files.join(', ')}") unless missing_files.empty?
+missing_files = [
+    path for path in internal_paths
+    if not Path(path).exists() and not Path(path, 'index.html').exists()
+]
+if missing_files:
+    raise SystemExit('Missing internal paths: ' + ', '.join(missing_files))
 
-anchors = content.scan(/id="([^"]+)"/).flatten
-nav_targets = content.scan(/href="#([^"]+)"/).flatten
-missing_anchors = nav_targets.reject { |target| anchors.include?(target) }
-abort("Missing anchor targets: #{missing_anchors.join(', ')}") unless missing_anchors.empty?
+import re
+anchors = re.findall(r'id="([^"]+)"', content)
+nav_targets = re.findall(r'href="#([^"]+)"', content)
+missing_anchors = [target for target in nav_targets if target not in anchors]
+if missing_anchors:
+    raise SystemExit('Missing anchor targets: ' + ', '.join(missing_anchors))
 
-abort('Expected no Honors navigation until content exists') if content.include?('href="#honors"')
-abort('Expected no JavaScript dependency on homepage') if content.match?(/<script/i)
-RUBY
+if 'href="#honors"' in content:
+    raise SystemExit('Expected no Honors navigation until content exists')
+if re.search(r'<script', content, re.IGNORECASE):
+    raise SystemExit('Expected no JavaScript dependency on homepage')
+PY
 ```
 
 Expected: PASS with no output and exit code 0.
@@ -605,13 +616,17 @@ Expected: If a Gemfile exists, Jekyll starts at `http://127.0.0.1:4000/`. If no 
 Run:
 
 ```bash
-ruby - <<'RUBY'
-content = File.read('index.md')
-frontmatter = content.lines.take_while.with_index { |line, index| index == 0 || line != "---\n" || index < 2 }
-abort('Missing Jekyll front matter') unless content.start_with?("---\nlayout: default\ntitle: Yanyan Yuan\n---\n")
-abort('Homepage CSS missing') unless content.include?('<style>') && content.include?('</style>')
-abort('Homepage wrapper missing') unless content.include?('<div class="research-homepage">')
-RUBY
+python3 - <<'PY'
+from pathlib import Path
+
+content = Path('index.md').read_text()
+if not content.startswith('---\nlayout: default\ntitle: Yanyan Yuan\n---\n'):
+    raise SystemExit('Missing Jekyll front matter')
+if '<style>' not in content or '</style>' not in content:
+    raise SystemExit('Homepage CSS missing')
+if '<div class="research-homepage">' not in content:
+    raise SystemExit('Homepage wrapper missing')
+PY
 ```
 
 Expected: PASS with no output and exit code 0.
