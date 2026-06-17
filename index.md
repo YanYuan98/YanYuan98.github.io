@@ -257,11 +257,8 @@ title: Yanyan Yuan
   }
 
   .profile-highlight {
-    background: #e8f1ff;
-    border-radius: 6px;
     color: #1d4ed8;
     font-weight: 750;
-    padding: 1px 5px;
   }
 
   .profile-text {
@@ -562,7 +559,7 @@ title: Yanyan Yuan
           <div>
             <h1 class="profile-name">Yanyan Yuan <span>(袁炎炎)</span></h1>
             <p class="profile-text">
-              I am Yanyan Yuan. I received my <span class="profile-highlight">Ph.D.</span> degree in 2025 and B.Eng. degree in 2020 from the School of Aeronautics and Astronautics, <span class="profile-highlight">Zhejiang University</span>.
+              I am Yanyan Yuan. I received my <span class="profile-highlight">Ph.D.</span> degree in 2025 and <span class="profile-highlight">B.Eng.</span> degree in 2020 from the School of Aeronautics and Astronautics, <span class="profile-highlight">Zhejiang University</span>.
             </p>
             <p class="profile-text">
               My research focuses on humanoid robot motion control, general motion tracking, motion generation, behavior foundation models and humanoid-object Interaction. I aim to develop embodiment-aware control methods for robust, agile, and task-adaptive whole-body motion in real-world.
@@ -627,7 +624,15 @@ title: Yanyan Yuan
               <h3 class="paper-title">Humanoid Robot Bolt Juggle Soccer Ball</h3>
               <p class="authors"><strong>Yanyan Yuan</strong>, Mirrorme Technology Co., Ltd.</p>
               <div class="publication-links">
-                <a href="https://www.zhihu.com/pin/2048524691153876702">Project Page</a>
+                <a href="https://www.zhihu.com/pin/2048524691153876702">
+                  <span class="publication-link-icon publication-link-icon-page" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
+                      <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
+                    </svg>
+                  </span>
+                  <span>Project Page</span>
+                </a>
               </div>
             </div>
           </article>
@@ -660,8 +665,23 @@ title: Yanyan Yuan
                   </span>
                   <span>Paper</span>
                 </a>
-                <a href="DTG-IRRL-For-Badminton/">Project Page</a>
-                <a href="https://github.com/Stylite-Y/DTG_IRRL_for_Badminton">Code</a>
+                <a href="DTG-IRRL-For-Badminton/">
+                  <span class="publication-link-icon publication-link-icon-page" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M10 13a5 5 0 0 0 7.07 0l2.12-2.12a5 5 0 0 0-7.07-7.07L11 4.93"></path>
+                      <path d="M14 11a5 5 0 0 0-7.07 0L4.81 13.12a5 5 0 0 0 7.07 7.07L13 19.07"></path>
+                    </svg>
+                  </span>
+                  <span>Project Page</span>
+                </a>
+                <a href="https://github.com/Stylite-Y/DTG_IRRL_for_Badminton">
+                  <span class="publication-link-icon publication-link-icon-github" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                      <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.18-3.37-1.18a2.65 2.65 0 0 0-1.11-1.46c-.91-.62.07-.61.07-.61a2.1 2.1 0 0 1 1.53 1.03 2.13 2.13 0 0 0 2.91.83 2.14 2.14 0 0 1 .64-1.34c-2.22-.25-4.56-1.11-4.56-4.95a3.87 3.87 0 0 1 1.03-2.69 3.6 3.6 0 0 1 .1-2.65s.84-.27 2.75 1.03a9.46 9.46 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.37.84.41 1.8.1 2.65a3.86 3.86 0 0 1 1.03 2.69c0 3.85-2.34 4.69-4.57 4.94a2.39 2.39 0 0 1 .68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path>
+                    </svg>
+                  </span>
+                  <span>Code</span>
+                </a>
               </div>
             </div>
           </article>

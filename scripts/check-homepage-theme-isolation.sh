@@ -91,13 +91,47 @@ fi
 
 assert_contains "$INDEX_FILE" '<span class="profile-highlight">Ph.D.</span>' \
   "Ph.D. highlight is missing"
+assert_contains "$INDEX_FILE" '<span class="profile-highlight">B.Eng.</span>' \
+  "B.Eng. highlight is missing"
 assert_contains "$INDEX_FILE" '<span class="profile-highlight">Zhejiang University</span>' \
   "Zhejiang University highlight is missing"
 assert_contains "$INDEX_FILE" 'class="publication-link-icon"' \
   "paper link icon class is missing"
+assert_contains "$INDEX_FILE" 'class="publication-link-icon publication-link-icon-page"' \
+  "Project Page link icon class is missing"
+assert_contains "$INDEX_FILE" 'class="publication-link-icon publication-link-icon-github"' \
+  "Code link GitHub icon class is missing"
 assert_contains "$INDEX_FILE" 'href="https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2025.1649870/full"' \
   "DTG-IRRL paper link is missing"
 assert_contains "$INDEX_FILE" 'href="https://doi.org/10.1109/LRA.2025.3541910"' \
   "RA-L paper link is missing"
+
+if awk '
+  index($0, ".profile-highlight {") {
+    in_rule = 1
+    next
+  }
+  in_rule && index($0, "}") {
+    in_rule = 0
+  }
+  in_rule && $0 ~ /(background|box-shadow|text-shadow|border-radius|padding):/ {
+    found = 1
+  }
+  END {
+    exit found ? 0 : 1
+  }
+' "$INDEX_FILE"; then
+  fail ".profile-highlight must be text-only without background, shadow, rounded box, or padding"
+fi
+
+project_page_icon_count=$(grep -Fc 'class="publication-link-icon publication-link-icon-page"' "$INDEX_FILE")
+if [ "$project_page_icon_count" -lt 2 ]; then
+  fail "each Project Page block must include a webpage icon"
+fi
+
+code_icon_count=$(grep -Fc 'class="publication-link-icon publication-link-icon-github"' "$INDEX_FILE")
+if [ "$code_icon_count" -lt 1 ]; then
+  fail "Code block must include a GitHub icon"
+fi
 
 printf 'Homepage theme isolation checks passed.\n'
