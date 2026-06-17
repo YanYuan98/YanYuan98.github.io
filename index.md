@@ -23,21 +23,136 @@ title: Yanyan Yuan
 
   .research-shell {
     display: grid;
-    grid-template-columns: 170px minmax(0, 1fr);
+    grid-template-columns: 220px minmax(0, 1fr);
     gap: 24px;
     max-width: 1050px;
     margin: 0 auto;
   }
 
-  .side-nav {
+  .sidebar-stack {
+    align-self: start;
+    display: grid;
+    gap: 14px;
     position: sticky;
     top: 22px;
-    align-self: start;
+  }
+
+  .sidebar-profile,
+  .side-nav {
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
     box-shadow: var(--shadow);
     padding: 16px;
+  }
+
+  .sidebar-profile {
+    text-align: center;
+  }
+
+  .sidebar-avatar {
+    aspect-ratio: 1;
+    border: 4px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 10px 24px rgba(30, 64, 175, 0.14);
+    display: block;
+    margin: 0 auto 12px;
+    object-fit: cover;
+    width: 84px;
+  }
+
+  .sidebar-name {
+    color: #111827;
+    font-size: 17px;
+    font-weight: 750;
+    line-height: 1.25;
+    margin-bottom: 12px;
+  }
+
+  .sidebar-links {
+    display: grid;
+    gap: 7px;
+  }
+
+  .sidebar-links a {
+    align-items: center;
+    background: #f8fafc;
+    border: 1px solid #dbe4ef;
+    border-radius: 6px;
+    color: var(--accent);
+    display: flex;
+    font-size: 13px;
+    font-weight: 650;
+    gap: 8px;
+    overflow-wrap: anywhere;
+    padding: 8px 10px;
+    text-decoration: none;
+    text-align: left;
+    width: 50%;
+    margin: 0 auto;
+  }
+
+  .sidebar-links a:hover,
+  .sidebar-links a:focus {
+    background: #eff6ff;
+    border-color: #bfdbfe;
+    color: var(--accent-hover);
+  }
+
+  .sidebar-icon {
+    align-items: center;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+    color: var(--accent);
+    display: inline-flex;
+    flex: 0 0 24px;
+    height: 24px;
+    justify-content: center;
+    width: 24px;
+  }
+
+  .sidebar-icon svg {
+    display: block;
+    height: 14px;
+    width: 14px;
+  }
+
+  .sidebar-icon-zhihu {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .link-row a {
+    align-items: center;
+    display: inline-flex;
+    gap: 8px;
+  }
+
+  .link-icon {
+    align-items: center;
+    background: #eff6ff;
+    border: 1px solid #dbeafe;
+    border-radius: 6px;
+    color: var(--accent);
+    display: inline-flex;
+    flex: 0 0 22px;
+    height: 22px;
+    justify-content: center;
+    width: 22px;
+  }
+
+  .link-icon svg {
+    display: block;
+    height: 13px;
+    width: 13px;
+  }
+
+  .link-icon-zhihu {
+    font-size: 11px;
+    font-weight: 800;
+    line-height: 1;
   }
 
   .nav-kicker {
@@ -145,18 +260,13 @@ title: Yanyan Yuan
     color: var(--accent-hover);
   }
 
-  .avatar-placeholder {
-    align-items: center;
+  .profile-photo {
     aspect-ratio: 1;
-    background: linear-gradient(145deg, #e8eef8, #cbdaf5);
     border: 5px solid #ffffff;
     border-radius: 50%;
     box-shadow: 0 14px 30px rgba(30, 64, 175, 0.16);
-    color: #315da8;
-    display: flex;
-    font-size: 42px;
-    font-weight: 800;
-    justify-content: center;
+    display: block;
+    object-fit: cover;
     width: 140px;
   }
 
@@ -295,11 +405,14 @@ title: Yanyan Yuan
       display: block;
     }
 
-    .side-nav {
+    .sidebar-stack {
       margin-bottom: 16px;
+      position: static;
+    }
+
+    .side-nav {
       overflow-x: auto;
       padding: 12px;
-      position: static;
       white-space: nowrap;
     }
 
@@ -321,7 +434,7 @@ title: Yanyan Yuan
       justify-items: start;
     }
 
-    .avatar-placeholder {
+    .profile-photo {
       grid-row: 1;
       width: 112px;
     }
@@ -349,13 +462,43 @@ title: Yanyan Yuan
 
 <div class="research-homepage">
   <div class="research-shell">
-    <nav class="side-nav" aria-label="Homepage sections">
-      <div class="nav-kicker">Yanyan Yuan</div>
-      <a href="#about">About</a>
-      <a href="#news">News</a>
-      <a href="#selected-works">Selected Works</a>
-      <a href="#publications">Publications</a>
-    </nav>
+    <aside class="sidebar-stack" aria-label="Profile and homepage navigation">
+      <section class="sidebar-profile" aria-label="Basic information">
+        <img class="sidebar-avatar" src="assets/images/profile/avatar.jpg" alt="Yanyan Yuan">
+        <div class="sidebar-name">Yanyan Yuan</div>
+        <div class="sidebar-links">
+          <a href="mailto:yuanyanyan98@163.com">
+            <span class="sidebar-icon sidebar-icon-email" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                <path d="m3 7 9 6 9-6"></path>
+              </svg>
+            </span>
+            <span>Email</span>
+          </a>
+          <a href="https://github.com/YanYuan98">
+            <span class="sidebar-icon sidebar-icon-github" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.18-3.37-1.18a2.65 2.65 0 0 0-1.11-1.46c-.91-.62.07-.61.07-.61a2.1 2.1 0 0 1 1.53 1.03 2.13 2.13 0 0 0 2.91.83 2.14 2.14 0 0 1 .64-1.34c-2.22-.25-4.56-1.11-4.56-4.95a3.87 3.87 0 0 1 1.03-2.69 3.6 3.6 0 0 1 .1-2.65s.84-.27 2.75 1.03a9.46 9.46 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.37.84.41 1.8.1 2.65a3.86 3.86 0 0 1 1.03 2.69c0 3.85-2.34 4.69-4.57 4.94a2.39 2.39 0 0 1 .68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path>
+              </svg>
+            </span>
+            <span>GitHub</span>
+          </a>
+          <a href="https://www.zhihu.com/people/yuan-yan-yan-47">
+            <span class="sidebar-icon sidebar-icon-zhihu" aria-hidden="true">知</span>
+            <span>Zhihu</span>
+          </a>
+        </div>
+      </section>
+
+      <nav class="side-nav" aria-label="Homepage sections">
+        <div class="nav-kicker">Contents</div>
+        <a href="#about">About</a>
+        <a href="#news">News</a>
+        <a href="#projects">Projects</a>
+        <a href="#Research">Research</a>
+      </nav>
+    </aside>
 
     <main class="homepage-main">
       <section class="section-card" id="about">
@@ -363,25 +506,47 @@ title: Yanyan Yuan
           <div>
             <h1 class="profile-name">Yanyan Yuan <span>(袁炎炎)</span></h1>
             <p class="profile-text">
-              I am a PhD student at the School of Aeronautics and Astronautics, Zhejiang University. My research focuses on robotics, robotic arms, humanoid robots, reinforcement learning, and dynamic robot motion/control.
+              I am Yanyan Yuan. I received my Ph.D. degree in 2025 and B.Eng. degree in 2020 from the School of Aeronautics and Astronautics, Zhejiang University.
             </p>
             <p class="profile-text">
-              I am interested in building robot systems that can learn, adapt, and perform high-dynamic tasks in real-world settings.
+              My research focuses on humanoid robot motion control, general motion tracking, motion generation, behavior foundation models and humanoid-object Interaction. I aim to develop embodiment-aware control methods for robust, agile, and task-adaptive whole-body motion in real-world.
+            </p>
+            <p class="profile-text">
+              I have also worked on the design and control of robotic manipulators and five-finger dexterous hands, with broader interests in connecting robot embodiment, motion generation, and real-world task execution.
             </p>
             <div class="research-tags" aria-label="Research interests">
-              <span>Robotics</span>
-              <span>Robotic Arm</span>
               <span>Humanoid Robot</span>
-              <span>Reinforcement Learning</span>
-              <span>Dynamic Control</span>
+              <span>Motion Tracking</span>
+              <span>Humanoid-Object Interaction</span>
+              <span>Behavior Foundation Model</span>
+              <span>Robotic Arm</span>
+              <span>dexterous robotic hand</span>
             </div>
             <div class="link-row" aria-label="Profile links">
-              <a href="mailto:yuanyan_hy@zju.edu.cn">Email</a>
-              <a href="https://github.com/Stylite-Y">GitHub</a>
-              <a href="https://www.zhihu.com/people/yuan-yan-yan-47">Zhihu</a>
+              <a href="mailto:yuanyanyan98@163.com">
+                <span class="link-icon link-icon-email" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                    <path d="m3 7 9 6 9-6"></path>
+                  </svg>
+                </span>
+                <span>Email</span>
+              </a>
+              <a href="https://github.com/YanYuan98">
+                <span class="link-icon link-icon-github" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.61-3.37-1.18-3.37-1.18a2.65 2.65 0 0 0-1.11-1.46c-.91-.62.07-.61.07-.61a2.1 2.1 0 0 1 1.53 1.03 2.13 2.13 0 0 0 2.91.83 2.14 2.14 0 0 1 .64-1.34c-2.22-.25-4.56-1.11-4.56-4.95a3.87 3.87 0 0 1 1.03-2.69 3.6 3.6 0 0 1 .1-2.65s.84-.27 2.75 1.03a9.46 9.46 0 0 1 5 0c1.91-1.3 2.75-1.03 2.75-1.03.37.84.41 1.8.1 2.65a3.86 3.86 0 0 1 1.03 2.69c0 3.85-2.34 4.69-4.57 4.94a2.39 2.39 0 0 1 .68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"></path>
+                  </svg>
+                </span>
+                <span>GitHub</span>
+              </a>
+              <a href="https://www.zhihu.com/people/yuan-yan-yan-47">
+                <span class="link-icon link-icon-zhihu" aria-hidden="true">知</span>
+                <span>Zhihu</span>
+              </a>
             </div>
           </div>
-          <div class="avatar-placeholder" aria-label="Initials avatar">YY</div>
+          <img class="profile-photo" src="assets/images/profile/avatar.jpg" alt="Yanyan Yuan">
         </div>
       </section>
 
@@ -389,49 +554,43 @@ title: Yanyan Yuan
         <h2>News</h2>
         <ul class="news-list">
           <li>
-            <span class="news-date">2025-04</span>
-            <span>Our paper on high-dynamic robotic arm design was published in <strong>IEEE Robotics and Automation Letters</strong>.</span>
-          </li>
-          <li>
-            <span class="news-date">2024</span>
-            <span>Released the project page for dynamic trajectory generation and imitation-relaxation reinforcement learning for sparse badminton strikes.</span>
+            <span class="news-date">2026-06</span>
+            <span>Released a demonstration of a soccer-ball juggling task on the Bolt humanoid robot, showcasing dynamic whole-body coordination and balance control.</span>
           </li>
         </ul>
       </section>
 
-      <section class="section-card" id="selected-works">
-        <h2>Selected Works</h2>
+      <section class="section-card" id="projects">
+        <h2>Projects</h2>
         <div class="publication-list">
           <article class="publication-item">
             <a class="publication-media" href="DTG-IRRL-For-Badminton/" aria-label="Open badminton strikes project page">
-              <img src="DTG-IRRL-For-Badminton/image/fig1.jpg" alt="Dynamic trajectory generation framework for badminton robot striking">
+              <img src="assets/images/works/juggle.jpg" alt="Dynamic trajectory generation framework for badminton robot striking">
             </a>
             <div>
-              <h3 class="paper-title">Imitation-Relaxation Reinforcement Learning for Sparse Badminton Strikes via Dynamic Trajectory Generation</h3>
-              <p class="authors"><strong>Yanyan Yuan</strong>, Yucheng Tao, Shaowen Cheng, Yanhong Liang, Yongbin Jin, Hongtao Wang</p>
-              <p class="venue">Submitted to <strong>Frontiers in Neurorobotics</strong></p>
-              <p class="paper-description">A robot badminton striking framework that combines dynamic trajectory generation with imitation-relaxation reinforcement learning for sparse, high-dynamic striking tasks.</p>
+              <h3 class="paper-title">Humanoid Robot Bolt Juggle Soccer Ball</h3>
+              <p class="authors"><strong>Yanyan Yuan</strong>, Mirrorme Technology Co., Ltd.</p>
               <div class="publication-links">
-                <a href="DTG-IRRL-For-Badminton/">Project Page</a>
-                <a href="https://github.com/Stylite-Y/DTG_IRRL_for_Badminton">Code</a>
-                <a href="https://www.youtube.com/watch?v=gwa21ZNewJk">Video</a>
+                <a href="https://www.zhihu.com/pin/2048524691153876702">Project Page</a>
               </div>
             </div>
           </article>
         </div>
       </section>
 
-      <section class="section-card" id="publications">
-        <h2>Publications</h2>
+      <section class="section-card" id="Research">
+        <h2>Research</h2>
         <div class="publication-list">
           <article class="publication-item">
             <a class="publication-media" href="DTG-IRRL-For-Badminton/" aria-label="Open badminton strikes project page">
-              <img src="DTG-IRRL-For-Badminton/image/fig1.jpg" alt="Dynamic trajectory generation framework for badminton robot striking">
+              <img src="assets/images/works/DTG.png" alt="Dynamic trajectory generation framework for badminton robot striking">
             </a>
             <div>
               <h3 class="paper-title">Imitation-Relaxation Reinforcement Learning for Sparse Badminton Strikes via Dynamic Trajectory Generation</h3>
               <p class="authors"><strong>Yanyan Yuan</strong>, Yucheng Tao, Shaowen Cheng, Yanhong Liang, Yongbin Jin, Hongtao Wang</p>
-              <p class="venue">Submitted to <strong>Frontiers in Neurorobotics</strong></p>
+              <p class="venue"><strong>Front. Neurorobot.</strong>,
+              Volume 19, 02 September 2025
+              </p>
               <div class="publication-links">
                 <a href="DTG-IRRL-For-Badminton/">Project Page</a>
                 <a href="https://github.com/Stylite-Y/DTG_IRRL_for_Badminton">Code</a>
@@ -440,8 +599,8 @@ title: Yanyan Yuan
           </article>
 
           <article class="publication-item">
-            <div class="publication-media" aria-hidden="true">
-              <span class="media-fallback">RA-L 2025</span>
+            <div class="publication-media">
+              <img src="assets/images/works/Ral.png" alt="High-dynamic robotic arm design">
             </div>
             <div>
               <h3 class="paper-title">Optimal Design of High-Dynamic Robotic Arm Based on Angular Momentum Maximum</h3>
