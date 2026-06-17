@@ -49,7 +49,6 @@ title: Yanyan Yuan
     border: 0;
     float: none;
     margin: 0;
-    padding-bottom: 0;
     width: auto;
   }
 
@@ -78,7 +77,8 @@ title: Yanyan Yuan
     padding: 16px;
   }
 
-  .sidebar-profile {
+  .research-homepage .sidebar-profile {
+    padding: 16px;
     text-align: center;
   }
 
@@ -218,7 +218,7 @@ title: Yanyan Yuan
     min-width: 0;
   }
 
-  .section-card {
+  .research-homepage .section-card {
     background: var(--card);
     border: 1px solid var(--line);
     border-radius: 8px;
@@ -256,6 +256,14 @@ title: Yanyan Yuan
     font-weight: 600;
   }
 
+  .profile-highlight {
+    background: #e8f1ff;
+    border-radius: 6px;
+    color: #1d4ed8;
+    font-weight: 750;
+    padding: 1px 5px;
+  }
+
   .profile-text {
     color: #334155;
     font-size: 15px;
@@ -272,15 +280,31 @@ title: Yanyan Yuan
 
   .link-row a,
   .publication-links a {
+    align-items: center;
     background: #f8fafc;
     border: 1px solid #dbe4ef;
     border-radius: 999px;
     color: var(--accent);
+    display: inline-flex;
     font-size: 13px;
     font-weight: 650;
+    gap: 6px;
     line-height: 1;
     padding: 8px 12px;
     text-decoration: none;
+  }
+
+  .publication-link-icon {
+    display: inline-flex;
+    flex: 0 0 13px;
+    height: 13px;
+    width: 13px;
+  }
+
+  .publication-link-icon svg {
+    display: block;
+    height: 13px;
+    width: 13px;
   }
 
   .link-row a:hover,
@@ -457,7 +481,7 @@ title: Yanyan Yuan
       margin-right: 4px;
     }
 
-    .section-card {
+    .research-homepage .section-card {
       padding: 22px 18px;
     }
 
@@ -538,7 +562,7 @@ title: Yanyan Yuan
           <div>
             <h1 class="profile-name">Yanyan Yuan <span>(袁炎炎)</span></h1>
             <p class="profile-text">
-              I am Yanyan Yuan. I received my Ph.D. degree in 2025 and B.Eng. degree in 2020 from the School of Aeronautics and Astronautics, Zhejiang University.
+              I am Yanyan Yuan. I received my <span class="profile-highlight">Ph.D.</span> degree in 2025 and B.Eng. degree in 2020 from the School of Aeronautics and Astronautics, <span class="profile-highlight">Zhejiang University</span>.
             </p>
             <p class="profile-text">
               My research focuses on humanoid robot motion control, general motion tracking, motion generation, behavior foundation models and humanoid-object Interaction. I aim to develop embodiment-aware control methods for robust, agile, and task-adaptive whole-body motion in real-world.
@@ -624,6 +648,18 @@ title: Yanyan Yuan
               Volume 19, 02 September 2025
               </p>
               <div class="publication-links">
+                <a href="https://www.frontiersin.org/journals/neurorobotics/articles/10.3389/fnbot.2025.1649870/full">
+                  <span class="publication-link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <path d="M14 2v6h6"></path>
+                      <path d="M16 13H8"></path>
+                      <path d="M16 17H8"></path>
+                      <path d="M10 9H8"></path>
+                    </svg>
+                  </span>
+                  <span>Paper</span>
+                </a>
                 <a href="DTG-IRRL-For-Badminton/">Project Page</a>
                 <a href="https://github.com/Stylite-Y/DTG_IRRL_for_Badminton">Code</a>
               </div>
@@ -638,6 +674,20 @@ title: Yanyan Yuan
               <h3 class="paper-title">Optimal Design of High-Dynamic Robotic Arm Based on Angular Momentum Maximum</h3>
               <p class="authors"><strong>Yanyan Yuan</strong>, Xianwei Liu, Lei Jiang, Yongbin Jin, Hongtao Wang</p>
               <p class="venue"><strong>IEEE Robotics and Automation Letters</strong>, Volume 10, Issue 4, April 2025</p>
+              <div class="publication-links">
+                <a href="https://doi.org/10.1109/LRA.2025.3541910">
+                  <span class="publication-link-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                      <path d="M14 2v6h6"></path>
+                      <path d="M16 13H8"></path>
+                      <path d="M16 17H8"></path>
+                      <path d="M10 9H8"></path>
+                    </svg>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </div>
             </div>
           </article>
         </div>
