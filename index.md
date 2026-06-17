@@ -4,6 +4,30 @@ title: Yanyan Yuan
 ---
 
 <style>
+  body {
+    background: #f6f8fb;
+    padding: 0;
+  }
+
+  body > .wrapper {
+    margin: 0;
+    max-width: none;
+    width: auto;
+  }
+
+  body > .wrapper > header,
+  body > .wrapper > footer {
+    display: none;
+  }
+
+  body > .wrapper > section {
+    border: 0;
+    float: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
+
   .research-homepage {
     --accent: #2563eb;
     --accent-hover: #1d4ed8;
@@ -15,10 +39,18 @@ title: Yanyan Yuan
     --shadow: 0 10px 28px rgba(15, 23, 42, 0.07);
     color: var(--ink);
     background: var(--soft);
-    margin: -30px;
+    margin: 0;
     padding: 34px 22px 46px;
     min-height: 100vh;
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+
+  .research-homepage section {
+    border: 0;
+    float: none;
+    margin: 0;
+    padding-bottom: 0;
+    width: auto;
   }
 
   .research-shell {
@@ -397,7 +429,7 @@ title: Yanyan Yuan
 
   @media (max-width: 760px) {
     .research-homepage {
-      margin: -20px;
+      margin: 0;
       padding: 20px 14px 34px;
     }
 
